@@ -23,7 +23,19 @@ int main()
 		InserirNo(num, noArvore);
 	}
 
+	cout<<"Informe o valor que deseja buscar:";
+	cin>>num;
 	
+	if(busca(num,noArvore))
+	{
+		cout<<"O numero "<<num<<"  foi encontrado na arvore";
+	}
+	else
+	{
+		cout<<"O numero "<<num<<" nao foi encontrado na arvore";
+	}
+	
+		
 	cout<<"\nPre Ordem:"<<endl;
 	ArvorePreOrdem(noArvore);
 	cout<<"\n--------------------------"<<endl;
