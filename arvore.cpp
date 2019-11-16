@@ -114,42 +114,35 @@ PontNo buscaRaiz(Tipo chave, PontNo no)
 // Funcao de PreOrdem
 void ArvorePreOrdem(PontNo no)
 {
-	cout<<no->num<<" ";
-	if(no->esquerda != NULL)
+	
+	if(no != NULL)
 	{
+		cout<<no->num<<" ";
 		ArvorePreOrdem(no->esquerda);
-	}
-	if(no->direita != NULL)
-	{
 		ArvorePreOrdem(no->direita);
 	}
+	
 }
 
 //Funcao para Ordem
 void  ArvoreEmOrdem(PontNo no)
 {
-	if(no->esquerda != NULL)
+	if(no != NULL)
 	{
 		ArvoreEmOrdem(no->esquerda);
-	}
-	cout<<no->num <<" ";
-	if(no->direita != NULL)
-	{
-		ArvoreEmOrdem(no->direita);
-	}
+		cout<<no->num <<" ";
+		ArvoreEmOrdem(no->direita);	
+	}	
 }
 
 //Funcao em PosOrdem
 void ArvorePosOrdem(PontNo no)
-{
-	if(no->esquerda != NULL)
+{	
+	if(no != NULL)
 	{
 		ArvorePosOrdem(no->esquerda);
-	}
-	if(no->direita != NULL)
-	{
 		ArvorePosOrdem(no->direita);
+		cout<<no->num <<" ";
 	}
-	cout<<no->num <<" ";
 }
 

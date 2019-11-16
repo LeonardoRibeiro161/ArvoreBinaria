@@ -10,13 +10,16 @@ int main()
 {
 
 	
-	int qteNo, num;
-	cout<<"Informe quantos nos arvore";
+	int noRaiz, num, qteNo;
+	cout<<"Informe o no raiz:";
+	cin>>noRaiz;
+	
+	cout<<"Informe a quantidade de no:";
 	cin>>qteNo;
 	
-	PontNo noArvore = criaNo(qteNo);
+	PontNo noArvore = criaNo(noRaiz);
 	
-	for(int i = 0; i <= qteNo;i++)
+	for(int i = 0; i < qteNo;i++)
 	{
 		cout<<"Informe o no:";
 		cin>>num;
