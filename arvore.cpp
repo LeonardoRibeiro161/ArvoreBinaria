@@ -114,14 +114,12 @@ PontNo buscaRaiz(Tipo chave, PontNo no)
 // Funcao de PreOrdem
 void ArvorePreOrdem(PontNo no)
 {
-	
 	if(no != NULL)
 	{
 		cout<<no->num<<" ";
 		ArvorePreOrdem(no->esquerda);
 		ArvorePreOrdem(no->direita);
 	}
-	
 }
 
 //Funcao para Ordem
@@ -137,7 +135,7 @@ void  ArvoreEmOrdem(PontNo no)
 
 //Funcao em PosOrdem
 void ArvorePosOrdem(PontNo no)
-{	
+{
 	if(no != NULL)
 	{
 		ArvorePosOrdem(no->esquerda);
@@ -146,3 +144,67 @@ void ArvorePosOrdem(PontNo no)
 	}
 }
 
+PontNo maiorEsq(PontNo no)
+{
+	no = no->esquerda;
+	while(no->direita != NULL)
+	{
+		no = no->direita;
+	}
+	return no;
+}
+
+bool RemoverNo(Tipo chave, PontNo raiz)
+{
+	PontNo noAtual, noPai, aux, auxPai;
+	aux = NULL;
+	noAtual = busca(chave, raiz);
+	//Não encontrou o no 
+	if(noAtual == NULL) 
+	{
+		return false;
+	}
+	noPai = buscaRaiz(chave, raiz);
+	if(noAtual->esquerda == NULL || noAtual->direita == NULL)
+	{
+		if(noAtual->esquerda == NULL)
+		{
+			aux = noAtual->direita;
+		}
+		else
+		{
+			aux = noAtual->esquerda;
+		}
+		if(noPai == NULL)
+		{
+			raiz = aux;
+		}
+		else
+		{
+			if(chave < noPai->num)
+			{
+				noPai->esquerda = aux;
+			}
+			else
+			{
+				noPai->direita = aux;
+			}	
+		}
+		free(noAtual); //libera o ponteiro para o noAtual	
+		}
+		else
+		{
+			aux = 	maiorEsq(noAtual);
+			noAtual->num = aux->num;
+			if(aux->esquerda != NULL)
+			{
+				noAtual->esquerda = aux->esquerda;
+			}
+			else
+			{
+				noAtual->esquerda = NULL;
+			}
+			free(aux);
+		}
+		return true;
+}

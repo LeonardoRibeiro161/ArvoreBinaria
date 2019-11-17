@@ -18,4 +18,6 @@ void  ArvoreEmOrdem(PontNo no);
 
 void ArvorePosOrdem(PontNo no);
 
+PontNo maiorEsq(PontNo no);
 
+bool RemoverNo(Tipo chave, PontNo raiz);
