@@ -7,15 +7,20 @@ using namespace std;
 
 int main() 
 {	
-	int qteNo, num, opcao, raiz,noExcluir;
-	
+	int qteNo, num, opcao, raiz,noExcluir,resp;
+	FILE *p_arq;
+	char diretorio[50]  = "C:\\Users\\Leonardo\\Desktop\\numeros.txt";
+	int conteudo[10];
+	int i;
+		
 	cout<<"-------------------------------------------"<<endl;
 	cout<<"            Arvore Binaria em C"<<endl;
 	cout<<"-------------------------------------------"<<endl;
+	
 	cout<<"Informe o no raiz:";
 	cin>>raiz;
-	
 	PontNo noArvore = criaNo(raiz);
+	
 	//Menu Principal
 	do
 	{	
@@ -34,11 +39,11 @@ int main()
 			case 1:
 				{
 					system("cls");
-
+					
 					cout<<"Informe a quantidade de no:";
 					cin>>qteNo;
 			
-					cout<<"Arvore criada com sucesso com "<<qteNo<<" nos."<<endl;
+					cout<<"Arvore criada com sucesso com "<<qteNo<<" nos. Pressione Enter"<<endl;
 					system("pause>>NULL");
 					break;
 				}
@@ -52,25 +57,44 @@ int main()
 						cin>>num;
 						InserirNo(num, noArvore);
 					}
+					cout<<"Nos inseridos com sucesso, pressione Enter"<<endl;
 					system("pause>>NULL");
 					break;
 				}
-			//Remover elemento: Ainda não esta funcionando
+			//Remover um elemento na arvore
 			case 3:
 				{
 					system("cls");
 					cout<<"Informe o no a ser excluir:";
 					cin>>noExcluir;
 					RemoverNo(noExcluir, noArvore);
-					cout<<"Elemento removido com sucesso"<<endl;
+					cout<<"Elemento removido com sucesso, pressione Enter"<<endl;
 					system("pause>>NULL");
 					break;
 				}
-			//Inserir elementos a partir de um arquivo txt: Ainda não esta funcionando
+			//Inserir nos da arvore por arquivo
 			case 4:
 				{
 					system("cls");
-					cout<<"Em Desenvolvimento"<<endl;
+					p_arq = fopen(diretorio, "rb");
+					if(p_arq != NULL)
+					{
+						
+						while(!feof(p_arq))
+						{
+							if(fscanf(p_arq, "%d", &conteudo[i]))
+							{
+								InserirNo(conteudo[i],noArvore);
+							}
+							i++;
+							
+						}
+						cout<<"Nos inseridos com sucesso, pressione Enter"<<endl;	
+					}
+					else
+					{
+						cout<<"Erro ao abrir o  arquivo no diretorio "<<endl;
+					}
 					system("pause>>NULL");
 					break;
 				}
@@ -88,6 +112,7 @@ int main()
 					{
 						cout<<"O numero "<<num<<" nao foi encontrado na arvore";
 					}
+					
 					system("pause>>NULL");
 					break;
 				}

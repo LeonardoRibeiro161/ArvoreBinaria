@@ -10,6 +10,8 @@ PontNo criaNo(Tipo chave);
 
 bool InserirNo(Tipo chave, PontNo no);
 
+void LerArquivo(PontNo no);
+
 PontNo buscaRaiz(Tipo chave, PontNo no);
 
 void ArvorePreOrdem(PontNo no);
